@@ -38,7 +38,7 @@ class DomainAuthority {
      */
     public static function urlMetrics($url, $cols = UrlMetrics::DomainAuthority)
     {
-        $self = App::make('DomainAuthority');
+        $self = app()->make(self::class);
         $expires = time() + self::EXPIRATION_INTERVAL;
 
         $signature = hash_hmac('sha1', "{$self->access_id}\n{$expires}", $self->secret_key, true);
